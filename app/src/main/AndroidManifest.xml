@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.rcc.g1overlay">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/bg_bubble"
         android:label="Google One Pro Overlay"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/bg_bubble"
         android:supportsRtl="true"
         android:theme="@style/Theme.GoogleOneOverlay">
 
@@ -27,7 +27,12 @@
         <service
             android:name=".FloatingOverlayService"
             android:enabled="true"
-            android:exported="false" />
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Floating overlay menu" />
+        </service>
 
     </application>
 
